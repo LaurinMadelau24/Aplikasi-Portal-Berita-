@@ -1,0 +1,508 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "JUNIOR BACKEND PRE-INTERVIEW TASK",
+      "version": "1.0.0"
+    },
+    "servers": [
+      {
+        "url": "http://localhost:3000",
+        "description": "Development server"
+      }
+    ],
+    "tags":[
+        {
+            "name": "Auth",
+            "description": "Register Login Logout"
+        },
+        {
+            "name": "Category",
+            "description": "Category"
+        },
+        {
+            "name": "News",
+            "description": "News"
+        }
+    ],
+    "components":{
+        "securitySchemes":{
+            "bearerAuth":{
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }            
+        }
+    },
+    "security":[
+        {
+            "bearerAuth":[]
+        }
+    ],
+    "paths":{
+        "/api/auth/register":{
+            "post":{
+                "tags":[
+                    "Auth"
+                ],
+                "summary": "Register Akun",
+                "requestBody":{
+                    "required": "true",
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "type": "object",
+                                "required": [
+                                    "email",
+                                    "password"
+                                ],
+                                "properties":{
+                                    "email":{
+                                        "type": "string",
+                                        "default": "laurinmadelau@gmail.com"
+                                    },
+                                    "password":{
+                                        "type": "string",
+                                        "default": "123456789"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "description":"contoh: <br> email: laurinmadelau@gmail.com <br> password: 123456789",
+                "responses":{
+                    "2002": {
+                        "description": "Success"
+                    },
+                    "4004": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/api/auth/login":{
+            "post":{
+                "tags":[
+                    "Auth"
+                ],
+                "summary": "Login Akun",
+                "requestBody":{
+                    "required": "true",
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "type": "object",
+                                "required": [
+                                    "email",
+                                    "password"
+                                ],
+                                "properties":{
+                                    "email":{
+                                        "type": "string",
+                                        "default": "laurinmadelau@gmail.com"
+                                    },
+                                    "password":{
+                                        "type": "string",
+                                        "default": "123456789"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "description":"contoh: <br> email: laurinmadelau@gmail.com <br> password: 123456789",
+                "responses":{
+                    "2002": {
+                        "description": "Success"
+                    },
+                    "4004": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/api/auth/logout":{
+            "post":{
+                "tags":[
+                    "Auth"
+                ],
+                "summary": "Logout Akun",
+                "description":"Authorizations",
+                "responses":{
+                    "2002": {
+                        "description": "Success"
+                    },
+                    "4004": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+
+        "/api/category/":{
+            "get":{
+                "tags":[
+                    "Category"
+                ],
+                "summary": "Get All Category authorizations (role: User,Admin)",
+                "description":"Get All Category authorizations (role: User,Admin)",
+                "responses":{
+                    "2002": {
+                        "description": "Success"
+                    },
+                    "4004": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/api/category/{id}":{
+            "get":{
+                "tags":[
+                    "Category"
+                ],
+                "summary": "Get One Category authorizations (role: User,Admin)",
+                "description":"Get One Category authorizations (role: User,Admin) <br> contoh: /api/category/3",
+                "parameters":[
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "schema":{
+                            "type": "integer"
+                        },
+                        "description": "ID Category"
+                    }
+                ],
+                "responses":{
+                    "2002": {
+                        "description": "Success"
+                    },
+                    "4004": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/api/category/create":{
+            "post":{
+                "tags":[
+                    "Category"
+                ],
+                "summary": "Create Category authorizations (role: Admin)",
+                "requestBody":{
+                    "required": "true",
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "type": "object",
+                                "required": [
+                                    "category_name"
+                                ],
+                                "properties":{
+                                    "category_name":{
+                                        "type": "string",
+                                        "default": "Alam"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "description":"Create Category authorizations (role: Admin)",
+                "responses":{
+                    "2002": {
+                        "description": "Success"
+                    },
+                    "4004": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/api/category/update/{id}":{
+            "put":{
+                "tags":[
+                    "Category"
+                ],
+                "summary": "Update Category authorizations (role: Admin)",
+                "parameters":[
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "schema":{
+                            "type": "integer"
+                        },
+                        "description": "ID Category"
+                    }
+                ],
+                "requestBody":{
+                    "required": "true",
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "type": "object",
+                                "required": [
+                                    "category_name"
+                                ],
+                                "properties":{
+                                    "category_name":{
+                                        "type": "string",
+                                        "default": "Alam"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "description":"Update Category authorizations (role: Admin)",
+                "responses":{
+                    "2002": {
+                        "description": "Success"
+                    },
+                    "4004": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/api/category/delete/{id}":{
+            "delete":{
+                "tags":[
+                    "Category"
+                ],
+                "summary": "Delete Category authorizations (role: Admin)",
+                "parameters":[
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "schema":{
+                            "type": "integer"
+                        },
+                        "description": "ID Category"
+                    }
+                ],
+                "description":"Delete Category authorizations (role: Admin)",
+                "responses":{
+                    "2002": {
+                        "description": "Success"
+                    },
+                    "4004": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+
+        "/api/news/":{
+            "get":{
+                "tags":[
+                    "News"
+                ],
+                "summary": "Get All News authorizations (role: User,Admin)",
+                "description":"Get All News authorizations (role: User,Admin)",
+                "responses":{
+                    "2002": {
+                        "description": "Success"
+                    },
+                    "4004": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/api/news/{id}":{
+            "get":{
+                "tags":[
+                    "News"
+                ],
+                "summary": "Get One News authorizations (role: User,Admin)",
+                "description":"Get One News authorizations (role: User,Admin) <br> contoh: /api/news/4",
+                "parameters":[
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "schema":{
+                            "type": "integer"
+                        },
+                        "description": "ID News"
+                    }
+                ],
+                "responses":{
+                    "2002": {
+                        "description": "Success"
+                    },
+                    "4004": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/api/news/search":{
+            "post":{
+                "tags":[
+                    "News"
+                ],
+                "summary": "Search News authorizations (role: Admin, User)",
+                "requestBody":{
+                    "required": "true",
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "type": "object",
+                                "required": [
+                                    "keyword"
+                                ],
+                                "properties":{
+                                    "keyword":{
+                                        "type": "string",
+                                        "default": "Prabowo Presiden"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "description":"Search News authorizations (role: Admin, User)",
+                "responses":{
+                    "2002": {
+                        "description": "Success"
+                    },
+                    "4004": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        
+        "/api/news/create":{
+            "post":{
+                "tags":[
+                    "News"
+                ],
+                "summary": "Create News authorizations (role: Admin)",
+                "requestBody":{
+                    "required": "true",
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "type": "object",
+                                "required": [
+                                    "title",
+                                    "content",
+                                    "category_id"
+                                ],
+                                "properties":{
+                                    "title":{
+                                        "type": "string",
+                                        "default": "SepakBola"
+                                    },
+                                    "content":{
+                                        "type": "string",
+                                        "default": "Indonesia VS Argentina"
+                                    },
+                                    "category_id":{
+                                        "type": "integer",
+                                        "default": 2
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "description":"Create News authorizations (role: Admin)",
+                "responses":{
+                    "2002": {
+                        "description": "Success"
+                    },
+                    "4004": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+    
+        "/api/news/update/{id}":{
+            "put":{
+                "tags":[
+                    "News"
+                ],
+                "summary": "Update News authorizations (role: Admin)",
+                "parameters":[
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "schema":{
+                            "type": "integer"
+                        },
+                        "description": "ID News"
+                    }
+                ],
+                "requestBody":{
+                    "required": "true",
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "type": "object",
+                                "required": [
+                                    "title",
+                                    "content",
+                                    "category_id"
+                                ],
+                                "properties":{
+                                    "title":{
+                                        "type": "string",
+                                        "default": "Hewan"
+                                    },
+                                    "content":{
+                                        "type": "string",
+                                        "default": "Ayam VS Kucing"
+                                    },
+                                    "category_id":{
+                                        "type": "integer",
+                                        "default": 1
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "description":"Update News authorizations (role: Admin)",
+                "responses":{
+                    "2002": {
+                        "description": "Success"
+                    },
+                    "4004": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/api/news/delete/{id}":{
+            "delete":{
+                "tags":[
+                    "News"
+                ],
+                "summary": "Delete News authorizations (role: Admin)",
+                "parameters":[
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "schema":{
+                            "type": "integer"
+                        },
+                        "description": "ID News"
+                    }
+                ],
+                "description":"Delete News authorizations (role: Admin)",
+                "responses":{
+                    "2002": {
+                        "description": "Success"
+                    },
+                    "4004": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        }
+    }
+}
