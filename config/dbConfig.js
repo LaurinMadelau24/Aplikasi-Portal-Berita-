@@ -1,5 +1,5 @@
-const mysql = require('mysql2')
-module.exports = {
+const {Sequelize} = require ("sequelize")
+const sequelize = module.exports = {
     host: process.env.DB_HOST,
     user: process.env.DB_USERNAME,
     password: process.env.DB_PASSWORD,
@@ -12,3 +12,5 @@ module.exports = {
         idle: 10000,
     }
 }
+
+module.exports = sequelize
