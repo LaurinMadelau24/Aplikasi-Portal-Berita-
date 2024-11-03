@@ -1,5 +1,5 @@
-const {Sequelize} = require ("sequelize")
-const sequelize = module.exports = {
+
+module.exports = {
     host: process.env.DB_HOST,
     user: process.env.DB_USERNAME,
     password: process.env.DB_PASSWORD,
@@ -12,5 +12,3 @@ const sequelize = module.exports = {
         idle: 10000,
     }
 }
-
-module.exports = sequelize
