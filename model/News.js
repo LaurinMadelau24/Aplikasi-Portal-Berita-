@@ -13,12 +13,12 @@ module.exports = (sequelize, Sequelize) => {
         category_id: {
             type: Sequelize.INTEGER,
             allowNull: false,
-            // references:{
-            //     model: 'categories',
-            //     key: 'id'
-            // },
-            // onDelete:"CASCADE",
-            // onUpdate:"CASCADE"
+            references:{
+                model: 'categories',
+                key: 'id'
+            },
+            onDelete:"CASCADE",
+            onUpdate:"CASCADE"
           },
     });
 
