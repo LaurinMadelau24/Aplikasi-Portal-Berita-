@@ -25,6 +25,6 @@ db.Category = require('./Category')(sequelize, Sequelize);
 
 // Definisikan Relasi
 // db.News.hasMany(db.Category, { foreignKey: 'category_id', as: 'news' });
-// db.News.belongsTo(db.Category, { foreignKey: 'category_id', as: 'category' });
+db.News.belongsTo(db.Category, { foreignKey: 'category_id', as: 'category' });
 
 module.exports = db;
