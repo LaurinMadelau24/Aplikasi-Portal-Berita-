@@ -2,7 +2,7 @@ require('dotenv').config();
 const bodyParser = require('body-parser');
 const { Console } = require('console');
 const app = require('express')();
-const cors = require('cors');
+
 
 const PORT = process.env.PORT;
 
@@ -10,11 +10,6 @@ const PORT = process.env.PORT;
 const swaggerJSDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 
-app.use(cors({
-  origin: 'https://tugasexpress-production.up.railway.app/', 
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], 
-  allowedHeaders: ['Content-Type', 'Authorization'], 
-})); 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
