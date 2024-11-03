@@ -10,7 +10,11 @@ const PORT = process.env.PORT;
 const swaggerJSDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 
-app.use(cors()); 
+app.use(cors({
+  origin: 'https://tugasexpress-production.up.railway.app/', 
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], 
+  allowedHeaders: ['Content-Type', 'Authorization'], 
+})); 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
