@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const { Console } = require('console');
 const app = require('express')();
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 
 //swagger
 const swaggerJSDoc = require('swagger-jsdoc');
