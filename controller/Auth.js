@@ -1,5 +1,5 @@
 const User = require('../model/main').User;
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 //import the generate function
 const { generateToken } = require('../middlewares/authJWT');
